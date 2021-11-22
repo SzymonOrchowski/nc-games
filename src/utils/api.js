@@ -10,8 +10,19 @@ export const getCategories = () => {
     })
 }
 
-export const getReviews = () => {
-    return ncGames.get('/reviews').then((res)=>{
-        return res.data.reviews;
+export const getReviews = (params) => {
+    let path = '/reviews'
+    if (params !== undefined) {
+        if (params.hasOwnProperty('review_id')) {
+            path += `/${params.review_id}`
+        }
+    }
+
+    return ncGames.get(path).then((res)=>{
+        if (res.data.reviews === undefined) {
+            return res.data.review
+        } else {
+            return res.data.reviews;
+        }
     })
 }
