@@ -1,3 +1,55 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: min-content min-content auto;
+  grid-template-areas: 
+    'main-header'
+    'nav'
+    'main-display';
+}
+
+.main-header {
+  border: solid red 1px;
+  grid-area: main-header;
+}
+
+.nav {
+  border: solid blue 1px;
+  grid-area: nav;
+  padding: 10px;
+}
+
+.nav button {
+  border: solid;
+  border-color: black;
+  border-radius: 10px;
+  border-width: 2px;
+  margin: 2px;
+  padding: 5px;
+}
+
+.main-display {
+  border: solid green 1px;
+  grid-area: main-display;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.main-display-header {
+  border: solid purple 1px;
+  padding: 15px
+}
+
+.review-card {
+  border: solid yellowgreen 1px;
+  padding: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.review-card img {
+  max-width: 200px;
+  max-height: 200px;
 }
