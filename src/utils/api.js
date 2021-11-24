@@ -16,6 +16,14 @@ export const getReviews = (params) => {
         if (params.hasOwnProperty('review_id')) {
             path += `/${params.review_id}`
         }
+        if (params.hasOwnProperty('category')) {
+            if (params.category !== 'All') {
+           path += `?category=${params.category}`
+            } else {
+                console.log(params.category)
+                path += ''
+            }
+        }
     }
 
     return ncGames.get(path).then((res)=>{

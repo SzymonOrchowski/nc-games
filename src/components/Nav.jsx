@@ -13,9 +13,9 @@ const Nav = ({ setCategory }) => {
 
     return (
         <nav className="nav">
-            <button key='All'>All games</button>
+            <button key='All' onClick={()=>{setCategory('All')}}>All games</button>
             {categories.map((category)=>{
-                return <button key={category.slug}>{category.slug}</button>
+                return <button key={category.slug} onClick={()=>{setCategory(category.slug)}}>{category.slug}</button>
             })}
         </nav>
     );

@@ -1,9 +1,10 @@
 import React from 'react';
 
-const MainDisplayHeader = () => {
+const MainDisplayHeader = ({category}) => {
+    console.log(category)
     return (
         <header className="main-display-header">
-            MainDisplayHeader
+            List of {category.toLowerCase()} games reviews.
         </header>
     );
 };

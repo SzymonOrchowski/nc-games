@@ -5,19 +5,19 @@ import { useState, useEffect } from 'react';
 import { getReviews } from '../utils/api';
 
 
-const MainDisplay = () => {
+const MainDisplay = ({category}) => {
     const [reviews, setReviews] = useState([])
-
+    
     useEffect(()=>{
-        getReviews().then((reviewsFromServer) =>{
+        getReviews({category}).then((reviewsFromServer) =>{
             setReviews(reviewsFromServer)
         })
-    }, [])
+    }, [category])
 
     return (
         <div className="main-display">
             <header>
-                <MainDisplayHeader />
+                <MainDisplayHeader category={category}/>
             </header>
             <main>
                 {reviews.map((review)=>{
