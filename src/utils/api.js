@@ -17,10 +17,9 @@ export const getReviews = (params) => {
             path += `/${params.review_id}`
         }
         if (params.hasOwnProperty('category')) {
-            if (params.category !== 'All') {
+            if (params.category !== 'all') {
            path += `?category=${params.category}`
             } else {
-                console.log(params.category)
                 path += ''
             }
         }
@@ -31,6 +30,16 @@ export const getReviews = (params) => {
             return res.data.review
         } else {
             return res.data.reviews;
+        }
+    })
+}
+
+export const getComments = (review_id) => {
+    return ncGames.get(`/reviews/${review_id}/comments`).then((res) => {
+        if (res.data.hasOwnProperty('comments')) {
+            return res.data.comments
+        } else {
+            return []
         }
     })
 }

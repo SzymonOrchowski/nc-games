@@ -4,10 +4,9 @@ import ReviewCard from './ReviewCard';
 import { useState, useEffect } from 'react';
 import { getReviews } from '../utils/api';
 
-
 const MainDisplay = ({category}) => {
     const [reviews, setReviews] = useState([])
-    
+
     useEffect(()=>{
         getReviews({category}).then((reviewsFromServer) =>{
             setReviews(reviewsFromServer)

@@ -1,21 +1,14 @@
 import React from 'react';
-import { useState, useEffect } from 'react'
-import { getCategories } from '../utils/api';
 
-const Nav = ({ setCategory }) => {
-    const [categories, setCategories] = useState([])
+import { Link } from 'react-router-dom'
 
-    useEffect(()=>{
-        getCategories().then((categoriesFromServer) =>{
-            setCategories(categoriesFromServer)
-        })
-    }, [])
-
+const Nav = ({categories, setCategory}) => {
     return (
         <nav className="nav">
-            <button key='All' onClick={()=>{setCategory('All')}}>All games</button>
+            <Link key='all' to='/' category='all'><button onClick={()=>{setCategory('all')}}>All games</button></Link>
             {categories.map((category)=>{
-                return <button key={category.slug} onClick={()=>{setCategory(category.slug)}}>{category.slug}</button>
+                const route = `category/${category.slug}`
+                return <Link key={category.slug} to={route} category={category.slug}><button onClick={()=>{setCategory(category.slug)}}>{category.slug}</button></Link>
             })}
         </nav>
     );
