@@ -6,14 +6,17 @@ import { getReviews } from '../utils/api';
 
 const MainDisplay = ({category}) => {
     const [reviews, setReviews] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(()=>{
+        setIsLoading(true)
         getReviews({category}).then((reviewsFromServer) =>{
             setReviews(reviewsFromServer)
+            setIsLoading(false)
         })
     }, [category])
 
-    return (
+    return (isLoading ? <div className="main-display-header-loading">Loading...</div> :
         <div className="main-display">
             <header>
                 <MainDisplayHeader category={category}/>

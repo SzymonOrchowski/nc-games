@@ -43,3 +43,14 @@ export const getComments = (review_id) => {
         }
     })
 }
+
+export const postComment = (review_id, user, commentBody) => {
+    const commentObj = {
+        username: 'AAA',
+        body: commentBody
+    }
+
+    return ncGames.post(`/reviews/${review_id}/comments`, commentObj).then((res) => {
+       return res.data.comment
+    })
+}

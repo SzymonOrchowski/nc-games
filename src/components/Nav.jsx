@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Link } from 'react-router-dom'
 
-const Nav = ({categories, setCategory}) => {
-    return (
+const Nav = ({categories, setCategory, isLoading}) => {
+    return (isLoading ? <nav className="nav">Loading categories...</nav> :
         <nav className="nav">
             <Link key='all' to='/' category='all'><button onClick={()=>{setCategory('all')}}>All games</button></Link>
             {categories.map((category)=>{

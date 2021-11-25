@@ -37,7 +37,7 @@
 
 button {
   color: #FAF5FF;
-  background: rgba(102, 76, 175, 0.2);
+  background: rgba(39, 38, 41, 0.2);
   border-radius: 10px;
   border-width: 2px;
   margin: 2px;
@@ -57,6 +57,10 @@ button {
   background-color: #000000;
 }
 
+.main-display-header-loading {
+  padding: 15px;
+  background-color: #000000;
+}
   /*      */
   /* CARD */
   /*      */
@@ -97,6 +101,8 @@ button {
   border-radius: 10px;
   text-align: left;
   padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 16px;
 }
 
 .review-main-author {
@@ -230,7 +236,7 @@ button {
 
 .comment-box {
   background: rgba(102, 76, 175, 0.2);
-  border: solid rgb(191, 177, 252);
+  border: solid rgb(191, 177, 252) 1px;
   border-radius: 10px;
   margin-left: 20px;
   margin-right: 20px;

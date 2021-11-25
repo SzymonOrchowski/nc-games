@@ -9,10 +9,13 @@ import { getCategories } from './utils/api';
 function App() {
   const [categories, setCategories] = useState([])
   const [category, setCategory ] = useState('all')
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(()=>{
+      setIsLoading(true)
       getCategories().then((categoriesFromServer) =>{
           setCategories(categoriesFromServer)
+          setIsLoading(false)
       })
   }, [])
 
@@ -23,7 +26,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <MainHeader />
-        <Nav categories={categories} setCategory={setCategory}/>
+        <Nav categories={categories} setCategory={setCategory} isLoading={isLoading}/>
         <Routes>
           <Route path="/" element={<MainDisplay category={category}/>} />
           <Route path={categoryPath} element={<MainDisplay category={category}/>} />
