@@ -12,15 +12,15 @@ const ReviewMain = ({singleReview}) => {
             </div>
             <div className="review-main-author">
                 <h3>
-                    By {singleReview.owner}
+                    posted by {singleReview.owner}
                 </h3>
                 <h4>
-                    Posted at {dateToShow}
+                    at {dateToShow}
                 </h4>
             </div>
             <div className="review-main-game-category">
-                <h5>Game category: {singleReview.category}</h5>
-                <h5>Designed by: {singleReview.designer}</h5>
+                <h5>game category: {singleReview.category}</h5>
+                <h5>designed by: {singleReview.designer}</h5>
             </div>
             <div className="review-main-body">
                 <div id="review-main-body-text">
@@ -31,9 +31,13 @@ const ReviewMain = ({singleReview}) => {
                 </div>
             </div>
             <div className="review-vote-footer">
-                <p>Votes: {singleReview.votes} 
-                <button>+</button>
-                <button>-</button>
+                <p>Votes: {singleReview.votes}
+                <span id="button-plus">
+                    <button>+</button>
+                </span>
+                <span id="button-minus">
+                    <button>-</button>
+                </span>
                 </p>
             </div>  
         </>
