@@ -1,6 +1,7 @@
 import React from 'react';
 import { getComments } from '../utils/api';
 import { useEffect, useState } from 'react';
+import { formatDate } from '../utils/utils';
 
 const ReviewComments = ({review_id}) => {
     const [comments, setComments] = useState([])
@@ -10,25 +11,39 @@ const ReviewComments = ({review_id}) => {
             setComments(commentsForThatReview)
         })
     }, [review_id])
-    
+
+
     return (
         <>
             <div className="add-comment">
-                <button>Add comment</button>
+                <p>
+                    <button>Add comment</button>
+                </p>
             </div>
             <div className="comments">
-                {/* <ul>
+                <ul>
                     {comments.map((comment) => {
+                        const formatedDate = formatDate(comment.created_at, ['date', 'hour'])
                         return <li key={comment.comment_id}>
-                            <p>Comment author: {comment.author}</p>
-                            <p>Comment body: {comment.body}</p>
-                            <p>Comment created_at: {comment.created_at}</p>
-                            <p>Votes: {comment.votes}</p>
-                            <button>+</button>
-                            <button>-</button>
+                            <div className="comment-box">
+                                <div>
+                                    <span id="comment-author">{comment.author}</span>
+                                    <span id="comment-date">{formatedDate}</span>
+                                </div>
+                                <p>{comment.body}</p>
+                                <div id="comment-votes">
+                                    Votes: {comment.votes}
+                                    <span id="button-plus">
+                                        <button>+</button>
+                                    </span>
+                                    <span id="button-minus">
+                                        <button>-</button>
+                                    </span>
+                                </div>
+                            </div>
                         </li>
                     })}
-                </ul> */}
+                </ul>
             </div>
         </>
     );

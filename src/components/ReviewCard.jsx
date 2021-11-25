@@ -3,6 +3,7 @@ import { getReviews } from '../utils/api';
 import { useState, useEffect } from 'react';
 import ReviewMain from './ReviewMain'
 import ReviewComments from './ReviewComments'
+import styled from 'styled-components';
 
 const ReviewCard = ({reviewObj}) => {
     const review_id = reviewObj.review_id

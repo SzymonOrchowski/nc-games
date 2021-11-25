@@ -1,4 +1,6 @@
 .App {
+  background-color: #221334;
+  color: #FAF5FF;
   text-align: center;
   min-height: 100vh;
   display: grid;
@@ -16,6 +18,7 @@
 }
 
 .nav {
+  background-color: #016FB9;
   border: solid blue 1px;
   grid-area: nav;
   padding: 10px;
@@ -44,10 +47,14 @@
   padding: 15px
 }
 
+  /*      */
+  /* CARD */
+  /*      */
+
 .review-card {
   max-width: 850px;
   min-width: 200px;
-  background-color: #555555;
+  /* background-color: #555555; */
   border: solid yellowgreen 1px;
   margin-left: 10px;
   margin-top: 10px;
@@ -56,54 +63,100 @@
   padding-top: 0px;
   display: grid;
   grid-template-columns: 2fr 0.6fr 1.4fr;
-  grid-template-rows: 70px 80px 200px min-content 100px 100px;
+  grid-template-rows: min-content min-content 200px min-content min-content min-content;
 }
 
+  /*             */
+  /* CARD HEADER */
+  /*             */
+
 .review-main header {
-  /* background: #aaa; */
   text-align: left;
 }
 
 .review-main header div {
-  background: #aaa;
   text-align: left;
 }
 
 .review-main-title {
   grid-column: 1/4;
   grid-row: 1;
-  width: 100%;
-  height: 100%;
-  background-color:salmon;
-  color: black;
+  width: 100% auto;
+  height: 100% auto;
+  border: solid yellowgreen 4px;
+  background: rgba(102, 76, 175, 0.2);
+  border-radius: 10px;
   text-align: left;
+  padding-left: 20px;
 }
 
 .review-main-author {
+  border: solid yellowgreen 1px;
   grid-column: 1/3;
   grid-row: 2;
-  background-color: skyblue;
-  width: 100%;
+  width: 100% auto;
   height: 100%;
-  color: black;
+}
+
+.review-main-author h3 {
+  padding-left: 20px;
+  padding-top: 5px;
+  text-align: left;
+  margin: 0px
+}
+
+.review-main-author h4 {
+  padding-left: 20px;
+  padding-top: 4px;
+  padding-bottom: 5px;
+  text-align: left;
+  margin: 0px
 }
 
 .review-main-game-category {
+  padding-top: 2px;
   grid-column: 3;
   grid-row: 2;
-  background-color:seagreen;
-  width: 100%;
-  height: 100%;
-  color: black;
+  width: 100% auto;
+  height: 100% auto;
 }
 
+.review-main-game-category h5 {
+  padding-left: 10px;
+  padding-top: 7px;
+  text-align: left;
+  margin: 0px
+}
+
+  /*            */
+  /* CARD BODY  */
+  /*            */
+
 .review-main-body {
+  border: solid red 1px;
   grid-column: 1/4;
   grid-row: 3/5;
-  background-color: sandybrown;
-  width: 100%;
-  height: 100%;
-  color: black;
+  width: 100% auto;
+  height: 100% auto;
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+}
+
+#review-main-body-text {
+  grid-column: 1;
+  width: 100% auto;
+  height: 100% auto;
+}
+
+.review-main-body p {
+  padding-left: 20px;
+  text-align: left;
+}
+
+#review-main-body-img {
+  grid-column: 2;
+  width: 100% auto;
+  height: 100% auto;
 }
 
 #review-img {
@@ -111,19 +164,88 @@
   float: top;
   max-width: 400px;
   max-height: 300px;
+  width: auto;
+  height: auto;
 }
 
+  /*              */
+  /* CARD FOOTER  */
+  /*              */
+
 .review-vote-footer {
+  border: solid yellow;
+  margin: 0px;
+  padding: 0px;
   grid-column: 3;
   grid-row: 5;
 }
 
+.review-vote-footer p {
+  margin: 7px;
+}
+
 .add-comment {
+  border: solid yellow;
   grid-column: 1/2;
   grid-row: 5;
 }
 
+.add-comment p {
+  margin: 7px;
+  padding-left: 20px;
+  text-align: left;
+}
+
+  /*              */
+  /*   COMMENTS   */
+  /*              */
+
 .comments {
-  grid-column: 1/3;
-  grid-row:6
+  border: solid yellow;
+  grid-column: 1/4;
+  grid-row:6;
+  text-align: left;
+}
+
+.comments ul {
+  padding: 0px;
+  list-style-type: none;
+}
+
+#comment-author {
+  font-size: large;
+  margin-right: 8px;
+}
+
+#comment-date {
+  font-size: small;
+}
+
+.comment-box {
+  background: rgba(102, 76, 175, 0.2);
+  border: solid yellow;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 17px;
+  padding-bottom: 17px;
+}
+
+#button-plus {
+  margin-left: 5px;
+}
+
+#button-plus button {
+  width: 20px
+}
+
+#button-minus {
+  margin-left: 2px;
+}
+
+#button-minus button {
+  width: 20px
 }
