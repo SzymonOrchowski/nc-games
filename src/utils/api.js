@@ -54,3 +54,7 @@ export const postComment = (review_id, user, commentBody) => {
        return res.data.comment
     })
 }
+
+export const deleteComment = (comment_id) => {
+    return ncGames.delete(`comments/${comment_id}`)
+}
