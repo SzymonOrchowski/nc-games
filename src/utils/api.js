@@ -35,6 +35,12 @@ export const getReviews = (params) => {
     })
 }
 
+export const patchReview = (review_id, number) => {
+    return ncGames.patch(`/reviews/${review_id}`, {inc_votes: number}).then((res) => {
+        return res.data.review
+    })
+}
+
 export const getComments = (review_id) => {
     return ncGames.get(`/reviews/${review_id}/comments`).then((res) => {
         if (res.data.hasOwnProperty('comments')) {
@@ -47,7 +53,7 @@ export const getComments = (review_id) => {
 
 export const postComment = (review_id, user, commentBody) => {
     const commentObj = {
-        username: 'AAA',
+        username: user,
         body: commentBody
     }
 

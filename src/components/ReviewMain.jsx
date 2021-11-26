@@ -1,7 +1,10 @@
 import React from 'react';
+import { useState } from 'react';
 import { formatDate } from '../utils/utils';
+import { patchReview } from '../utils/api';
 
 const ReviewMain = ({singleReview}) => {
+    const [currentVotes, setCurrentVotes] = useState(singleReview.votes)
     let dateToShow 
     if (!!singleReview.created_at) dateToShow = formatDate(singleReview.created_at, ['date'])
 
@@ -31,12 +34,20 @@ const ReviewMain = ({singleReview}) => {
                 </div>
             </div>
             <div className="review-vote-footer">
-                <p>Votes: {singleReview.votes}
+                <p>Votes: {currentVotes}
                 <span id="button-plus">
-                    <button>+</button>
+                    <button onClick={(event) => {
+                        event.preventDefault();
+                        setCurrentVotes((currentVotes) => currentVotes +1)
+                        patchReview(singleReview.review_id, 1)
+                    }}>+</button>
                 </span>
                 <span id="button-minus">
-                    <button>-</button>
+                    <button onClick={(event) => {
+                        event.preventDefault();
+                        setCurrentVotes((currentVotes) => currentVotes > 0 ? currentVotes -1 : 0)
+                        patchReview(singleReview.review_id, -1)
+                    }}>-</button>
                 </span>
                 </p>
             </div>  

@@ -1,31 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { getComments } from '../utils/api';
 import { useEffect, useState } from 'react';
 import { postComment } from '../utils/api';
 import { sortArrayByKey } from '../utils/utils';
 import CommentBox from './CommentBox';
+import { UserContext } from '../contexts/UserContext';
 
 const ReviewComments = ({review_id}) => {
     const [comments, setComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [newCommentBoxVisible, setNewCommentBoxVisible] = useState(false)
     const [newCommentContent, setNewCommentContent] = useState('')
-    const [newCommentSubmit, setNewCommentSubmit] = useState(false)
-    
+    const [newCommentSubmitState, setNewCommentSubmitState] = useState(false)
+    const { user } = useContext(UserContext)
+
     useEffect(()=>{
         setIsLoading(true)
         getComments(review_id).then((commentsForThatReview)=>{
             setComments(commentsForThatReview)
             setIsLoading(false)
-            setNewCommentSubmit(false)
         })
-    }, [review_id, newCommentSubmit])
+    }, [review_id, newCommentSubmitState])
 
     const submitHandler = (event) => {
         event.preventDefault();
         setNewCommentBoxVisible(false)
-        postComment(review_id, 'user', newCommentContent).then(()=>{
-            setNewCommentSubmit(true)
+        postComment(review_id, user, newCommentContent).then(()=>{
+            newCommentSubmitState ? setNewCommentSubmitState(false) : setNewCommentSubmitState(true);
         })
     }
 
@@ -40,6 +41,7 @@ const ReviewComments = ({review_id}) => {
     }
 
     sortArrayByKey(comments, 'created_at')
+
 
     return (isLoading ? <div>Loading comments...</div> :
         <>

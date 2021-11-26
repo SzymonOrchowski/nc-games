@@ -6,6 +6,7 @@ import { deleteComment } from '../utils/api';
 const CommentBox = ({comment}) => {
     const [isConfirmDeleteVisible, setIsConfirmDeleteVisible] = useState(false)
     const [isCommentVisible, setIsCommentVisible] = useState(true)
+    const [currentVotes, setCurrentVotes] = useState(comment.votes)
 
     const formatedDate = formatDate(comment.created_at, ['date', 'hour'])
 
@@ -17,12 +18,20 @@ const CommentBox = ({comment}) => {
             </div>
             <p>{comment.body}</p>
             <div id="comment-votes">
-                Votes: {comment.votes}
+                Votes: {currentVotes}
                 <span id="button-plus">
-                    <button>+</button>
+                    <button onClick={(event) => {
+                        event.preventDefault();
+                        setCurrentVotes((currentVotes) => currentVotes +1)
+                        // patchComment(comment_id, 1) // in my back-end endpoint for that dosn't exist yet
+                    }}>+</button>
                 </span>
                 <span id="button-minus">
-                    <button>-</button>
+                    <button onClick={(event) => {
+                        event.preventDefault();
+                        setCurrentVotes((currentVotes) => currentVotes -1)
+                        // patchComment(comment_id, -1) // in my back-end endpoint for that dosn't exist yet
+                    }}>-</button>
                 </span>
                 <span id="button-delete">
                     <button onClick={(event) => {
