@@ -19,9 +19,6 @@ function App() {
       })
   }, [])
 
-  let categoryPath
-  category !== 'all' ? categoryPath = `/category/${category}` : categoryPath = '/'
-  
   return (
     <BrowserRouter>
       <div className="App">
@@ -29,7 +26,7 @@ function App() {
         <Nav categories={categories} setCategory={setCategory} isLoading={isLoading}/>
         <Routes>
           <Route path="/" element={<MainDisplay category={category}/>} />
-          <Route path={categoryPath} element={<MainDisplay category={category}/>} />
+          <Route path="/category/:category" element={<MainDisplay category={category}/>} />
           <Route path="/:review_id" element={<MainDisplay />} />
         </Routes>
       </div>

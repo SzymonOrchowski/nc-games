@@ -34,16 +34,18 @@ const ReviewComments = ({review_id}) => {
         setNewCommentContent(event.target.value);
     }
 
+    const addCommentButtonVisibilityHandler = (event) => {
+        event.preventDefault()
+        setNewCommentBoxVisible(true)
+    }
+
     sortArrayByKey(comments, 'created_at')
 
     return (isLoading ? <div>Loading comments...</div> :
         <>
             <div className="add-comment">
                 <p>
-                    <button onClick={(event)=>{
-                        event.preventDefault()
-                        setNewCommentBoxVisible(true)
-                    }}>Add comment</button>
+                    <button onClick={addCommentButtonVisibilityHandler}>Add comment</button>
                 </p>
             </div>
             <div className="comments">

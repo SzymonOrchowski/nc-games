@@ -6,7 +6,8 @@ const ncGames = axios.create({
 
 export const getCategories = () => {
     return ncGames.get('/categories').then((res)=>{
-        return res.data.categories;
+        const categoryNames = res.data.categories.map((category) => {return category.slug})
+        return categoryNames
     })
 }
 
