@@ -1,17 +1,16 @@
 import React from 'react';
 import { getComments } from '../utils/api';
 import { useEffect, useState } from 'react';
-import { formatDate } from '../utils/utils';
 import { postComment } from '../utils/api';
 import { sortArrayByKey } from '../utils/utils';
+import CommentBox from './CommentBox';
 
 const ReviewComments = ({review_id}) => {
     const [comments, setComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    const [newCommentBoxVisible, setNewCommentBoxVisible] = useState(true)
+    const [newCommentBoxVisible, setNewCommentBoxVisible] = useState(false)
     const [newCommentContent, setNewCommentContent] = useState('')
     const [newCommentSubmit, setNewCommentSubmit] = useState(false)
-    const [confirmDelete, setConfirmDelete] = useState(false)
     
     useEffect(()=>{
         setIsLoading(true)
@@ -34,9 +33,8 @@ const ReviewComments = ({review_id}) => {
         event.preventDefault();
         setNewCommentContent(event.target.value);
     }
-    console.log(comments, '<---presort')
+
     sortArrayByKey(comments, 'created_at')
-    console.log(comments, '<---postsort')
 
     return (isLoading ? <div>Loading comments...</div> :
         <>
@@ -62,46 +60,8 @@ const ReviewComments = ({review_id}) => {
                         </div>
                     </li> : null}
                     {comments.map((comment) => {
-                        const formatedDate = formatDate(comment.created_at, ['date', 'hour'])
-                        return <li key={comment.comment_id}>
-                            <div className="comment-box">
-                                <div>
-                                    <span id="comment-author">{comment.author}</span>
-                                    <span id="comment-date">{formatedDate}</span>
-                                </div>
-                                <p>{comment.body}</p>
-                                <div id="comment-votes">
-                                    Votes: {comment.votes}
-                                    <span id="button-plus">
-                                        <button>+</button>
-                                    </span>
-                                    <span id="button-minus">
-                                        <button>-</button>
-                                    </span>
-                                    <span id="button-delete">
-                                        <button onClick={(event) => {
-                                            event.preventDefault()
-                                            setConfirmDelete(true)
-                                        }}>Delete comment</button>
-                                    </span>
-                                    {confirmDelete ? <>
-                                    <span>Are you sure you want to delete this comment?</span>
-                                    <span id="button-yes">
-                                        <button onClick={(event) => {
-                                            event.preventDefault()
-                                            setConfirmDelete(false)
-                                        }}>Yes</button>
-                                    </span>
-                                    <span id="button-no">
-                                        <button onClick={(event) => {
-                                            event.preventDefault()
-                                            setConfirmDelete(false)
-                                        }}>No</button>
-                                    </span>
-                                    </>
-                                    : null}
-                                </div>
-                            </div>
+                        return <li key={comment.comment_id}><CommentBox comment={comment} />
+            
                         </li>
                     })}
                 </ul>

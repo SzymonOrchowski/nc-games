@@ -1,5 +1,5 @@
 .App {
-  background-color: #19092c;
+  background-color: #090420;
   color: #FAF5FF;
   text-align: center;
   min-height: 100vh;
@@ -13,6 +13,8 @@
 }
 
 .main-header {
+  background: rgb(4,4,10);
+  background: linear-gradient(148deg, rgba(4,4,10,1) 0%, rgba(8,8,78,1) 50%, rgb(229, 139, 251) 100%); 
   grid-area: main-header;
   font-size: x-large;
 }
@@ -22,6 +24,8 @@
 }
 
 .main-header h1 {
+  margin-top: 40px;
+  margin-bottom: 15px;
   margin-left: auto;
   margin-right: auto;
   max-width: 850px;
@@ -30,7 +34,7 @@
 }
 
 .nav {
-  background-color: #341381;
+  background-color: #300f6e;
   grid-area: nav;
   padding: 10px;
 }
