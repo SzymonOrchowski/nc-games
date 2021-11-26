@@ -218,11 +218,22 @@ button {
   /*   COMMENTS   */
   /*              */
 
+#confirm-delete {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .comments {
   grid-column: 1/4;
   grid-row:6;
   text-align: left;
 }
+
+#current-comment-votes {
+  display: inline-block;
+  width: 62px
+}
+
 
 .comments ul {
   padding: 0px;

@@ -18,7 +18,9 @@ const CommentBox = ({comment}) => {
             </div>
             <p>{comment.body}</p>
             <div id="comment-votes">
-                Votes: {currentVotes}
+                <span id="current-comment-votes">
+                    Votes: {currentVotes}
+                </span>
                 <span id="button-plus">
                     <button onClick={(event) => {
                         event.preventDefault();
@@ -40,7 +42,7 @@ const CommentBox = ({comment}) => {
                     }}>Delete comment</button>
                 </span>
                 {isConfirmDeleteVisible ? <>
-                <span>Are you sure you want to delete this comment?</span>
+                <span id="confirm-delete">Are you sure you want to delete this comment?</span>
                 <span id="button-yes">
                     <button onClick={(event) => {
                         event.preventDefault()

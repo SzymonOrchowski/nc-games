@@ -37,7 +37,7 @@ const ReviewComments = ({review_id}) => {
 
     const addCommentButtonVisibilityHandler = (event) => {
         event.preventDefault()
-        setNewCommentBoxVisible(true)
+        newCommentBoxVisible ? setNewCommentBoxVisible(false) : setNewCommentBoxVisible(true);
     }
 
     sortArrayByKey(comments, 'created_at')
