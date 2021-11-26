@@ -10,7 +10,6 @@ const MainDisplay = ({category}) => {
 
     useEffect(()=>{
         setIsLoading(true)
-        console.log(category)
         getReviews({category}).then((reviewsFromServer) =>{
             setReviews(reviewsFromServer)
             setIsLoading(false)

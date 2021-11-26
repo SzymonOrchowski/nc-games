@@ -62,7 +62,7 @@ const ReviewComments = ({review_id}) => {
                         </div>
                     </li> : null}
                     {comments.map((comment) => {
-                        return <li key={comment.comment_id}><CommentBox comment={comment} />
+                        return <li key={comment.comment_id}><CommentBox comment={comment}/>
             
                         </li>
                     })}
