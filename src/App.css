@@ -156,9 +156,11 @@ button {
   grid-row: 3/5;
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 #review-main-body-text {
+  margin-right: auto;
   min-width: 350px;
   max-width: 440px;
 }
