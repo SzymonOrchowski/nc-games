@@ -30,7 +30,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainDisplay category={category}/>} />
             <Route path="/category/:categoryURL" element={<MainDisplay category={category}/>} />
-            {/* <Route path="/:review_id" element={<MainDisplay />} /> */}
+            <Route path="/review/:review_idURL" element={<MainDisplay />} />
           </Routes>
         </div>
       </BrowserRouter>

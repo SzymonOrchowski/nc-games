@@ -5,6 +5,7 @@ import { postComment } from '../utils/api';
 import { sortArrayByKey } from '../utils/utils';
 import CommentBox from './CommentBox';
 import { UserContext } from '../contexts/UserContext';
+import { Link } from 'react-router-dom'
 
 const ReviewComments = ({review_id, limit}) => {
     const [comments, setComments] = useState([])
@@ -42,7 +43,6 @@ const ReviewComments = ({review_id, limit}) => {
 
     sortArrayByKey(comments, 'created_at')
 
-
     return (isLoading ? <div>Loading comments...</div> :
         <>
             <div className="add-comment">
@@ -64,6 +64,7 @@ const ReviewComments = ({review_id, limit}) => {
                         </div>
                     </li> : null}
                     {comments.map((comment, index) => {
+                        console.log(limit)
                         if (limit !== undefined) {
                             if (index < limit) {
                                 return <li key={comment.comment_id}><CommentBox comment={comment}/>
@@ -78,7 +79,7 @@ const ReviewComments = ({review_id, limit}) => {
                     })}
                 </ul>
                 {limit ? <div id="show-all-comments-button">
-                            <button>Show All Comments ({comments.length})</button> 
+                            <Link to={`/review/${review_id}`}><button>Show All Comments ({comments.length})</button></Link>
                         </div>
                 : null}
             </div>
