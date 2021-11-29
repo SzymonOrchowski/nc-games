@@ -16,11 +16,11 @@ Now start to implement the filtering/ordering features
 
 - [x] Basic styling added
 - [-] Responsive design
-- [-] Items aligned
+- [FIXED] Items aligned
   - not on mobile view
-- [-] Content legible (not too wide, obstructed, etc)
+- [FIXED] Content legible (not too wide, obstructed, etc)
   - not on mobile view
-- [ ] Refreshing doesn’t cause an issue on sub-pages
+- [FIXED] Refreshing doesn’t cause an issue on sub-pages
   - refreshing goes back to home page
 - [-] No errors in the console
   - DevTools error
@@ -49,7 +49,7 @@ Now start to implement the filtering/ordering features
   - with reviews with lots of comments it might be nice to see individual review pages rather than have all the comments on the category page
 - [x] Can vote on comments
 - [ ] Can vote a maximum of once in either direction per page load
-- [ ] Votes are persistent when page is refreshed
+- [backendEndpointNeeded] Votes are persistent when page is refreshed
 - [x] Can post new comments, which are persistent
 
 ### Additional functionality:

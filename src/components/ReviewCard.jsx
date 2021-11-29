@@ -26,7 +26,7 @@ const ReviewCard = ({reviewObj}) => {
         <StyledReviewCard background={backgroundUrl}>
             <div className="review-card">
                     <ReviewMain singleReview={singleReview} />
-                    <ReviewComments review_id={review_id} />
+                    <ReviewComments review_id={review_id} limit={1}/>
             </div>
         </StyledReviewCard>
     );

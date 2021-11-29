@@ -6,7 +6,7 @@ import { sortArrayByKey } from '../utils/utils';
 import CommentBox from './CommentBox';
 import { UserContext } from '../contexts/UserContext';
 
-const ReviewComments = ({review_id}) => {
+const ReviewComments = ({review_id, limit}) => {
     const [comments, setComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [newCommentBoxVisible, setNewCommentBoxVisible] = useState(false)
@@ -63,10 +63,17 @@ const ReviewComments = ({review_id}) => {
                             </form>
                         </div>
                     </li> : null}
-                    {comments.map((comment) => {
-                        return <li key={comment.comment_id}><CommentBox comment={comment}/>
-            
-                        </li>
+                    {comments.map((comment, index) => {
+                        console.log(limit)
+                        if (limit !== undefined) {
+                            if (index < limit) {
+                                return <li key={comment.comment_id}><CommentBox comment={comment}/>
+                                </li>
+                            }
+                        } else {
+                            return <li key={comment.comment_id}><CommentBox comment={comment}/>
+                                </li>
+                        }
                     })}
                 </ul>
             </div>
