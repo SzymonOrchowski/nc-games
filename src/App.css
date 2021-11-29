@@ -216,6 +216,13 @@ button {
   /*   COMMENTS   */
   /*              */
 
+#show-all-comments-button {
+  text-align: right;
+  margin-right: 17px;
+  margin-left: auto;
+  margin-bottom: 18px;
+}
+
 #confirm-delete {
   margin-left: 10px;
   margin-right: 10px;
