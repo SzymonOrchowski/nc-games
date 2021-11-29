@@ -29,8 +29,8 @@ function App() {
           <Nav categories={categories} setCategory={setCategory} isLoading={isLoading}/>
           <Routes>
             <Route path="/" element={<MainDisplay category={category}/>} />
-            <Route path="/category/:category" element={<MainDisplay category={category}/>} />
-            <Route path="/:review_id" element={<MainDisplay />} />
+            <Route path="/category/:categoryURL" element={<MainDisplay category={category}/>} />
+            {/* <Route path="/:review_id" element={<MainDisplay />} /> */}
           </Routes>
         </div>
       </BrowserRouter>

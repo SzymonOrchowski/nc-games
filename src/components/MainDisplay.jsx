@@ -3,10 +3,14 @@ import MainDisplayHeader from './MainDisplayHeader';
 import ReviewCard from './ReviewCard';
 import { useState, useEffect } from 'react';
 import { getReviews } from '../utils/api';
+import { useParams } from 'react-router-dom';
 
-const MainDisplay = ({category}) => {
+const MainDisplay = () => {
     const [reviews, setReviews] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const {categoryURL} = useParams()
+    let category
+    categoryURL ? category = categoryURL : category = 'all'
 
     useEffect(()=>{
         setIsLoading(true)
