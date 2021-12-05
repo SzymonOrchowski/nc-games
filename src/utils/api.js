@@ -65,3 +65,15 @@ export const postComment = (review_id, user, commentBody) => {
 export const deleteComment = (comment_id) => {
     return ncGames.delete(`comments/${comment_id}`)
 }
+
+export const getUsers = () => {
+    return ncGames.get('/users').then((res)=>{
+        return res.data.users
+    })
+}
+
+export const getUserByName = (username) => {
+    return ncGames.get(`/users/${username}`).then((res) => {
+        return res.data.user
+    })
+}

@@ -5,6 +5,7 @@ import { getCategories } from './utils/api';
 import MainHeader from './components/MainHeader';
 import Nav from './components/Nav';
 import MainDisplay from './components/MainDisplay';
+import Users from './components/Users'
 import { UserContext } from './contexts/UserContext'
 
 function App() {
@@ -25,12 +26,14 @@ function App() {
     <UserContext.Provider value={{user, setUser}}>
       <BrowserRouter>
         <div className="App">
-          <MainHeader />
-          <Nav categories={categories} setCategory={setCategory} isLoading={isLoading}/>
+          <MainHeader setUser={setUser}/>
+          <Nav categories={categories} setCategory={setCategory} isLoading={isLoading} />
           <Routes>
             <Route path="/" element={<MainDisplay category={category}/>} />
             <Route path="/category/:categoryURL" element={<MainDisplay category={category}/>} />
             <Route path="/review/:review_idURL" element={<MainDisplay />} />
+            <Route path="/review/:review_idURL" element={<MainDisplay />} />
+            <Route path="/users" element={<Users setUser={setUser}/>} />
           </Routes>
         </div>
       </BrowserRouter>
