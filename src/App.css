@@ -21,7 +21,7 @@
   background: linear-gradient(148deg, rgba(4,4,10,1) 0%, rgba(8,8,78,1) 50%, rgb(229, 139, 251) 100%); 
   grid-area: main-header;
   font-size: x-large;
-  height: 100px;
+  height: min-content;
   padding-bottom: 6px;
 }
 
@@ -30,9 +30,13 @@
   margin-right: auto;
   max-width: 850px;
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: flex-end;
+}
+
+#main-header-title {
+  margin-right: auto;
 }
 
 .main-header span {

@@ -33,8 +33,10 @@ const CommentBox = ({comment}) => {
                 <span id="button-minus">
                     <button onClick={(event) => {
                         event.preventDefault();
-                        setCurrentVotes((currentVotes) => currentVotes -1)
-                        patchCommentByCommentId(comment.comment_id, -1)
+                        if (currentVotes > 0) {
+                            setCurrentVotes((currentVotes) => currentVotes -1)
+                            patchCommentByCommentId(comment.comment_id, -1)
+                        }
                     }}>-</button>
                 </span>
                 {comment.author === user ?
