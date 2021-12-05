@@ -1,12 +1,14 @@
 import React from 'react';
 import { formatDate } from '../utils/utils';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { deleteComment } from '../utils/api';
+import { UserContext } from '../contexts/UserContext';
 
 const CommentBox = ({comment}) => {
     const [isConfirmDeleteVisible, setIsConfirmDeleteVisible] = useState(false)
     const [isCommentVisible, setIsCommentVisible] = useState(true)
     const [currentVotes, setCurrentVotes] = useState(comment.votes)
+    const { user } = useContext(UserContext)
 
     const formatedDate = formatDate(comment.created_at, ['date', 'hour'])
 
@@ -35,12 +37,14 @@ const CommentBox = ({comment}) => {
                         // patchComment(comment_id, -1) // in my back-end endpoint for that dosn't exist yet
                     }}>-</button>
                 </span>
+                {comment.author === user ?
                 <span id="button-delete">
                     <button onClick={(event) => {
                         event.preventDefault()
                         setIsConfirmDeleteVisible(true)
                     }}>Delete comment</button>
-                </span>
+                </span> : null
+                }
                 {isConfirmDeleteVisible ? <>
                 <span id="confirm-delete">Are you sure you want to delete this comment?</span>
                 <span id="button-yes">
