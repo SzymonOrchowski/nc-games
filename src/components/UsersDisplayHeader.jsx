@@ -3,7 +3,7 @@ import React from 'react';
 const UsersDisplayHeader = () => {
     return (
         <header className="main-display-header">
-            List of all users account.
+            List of all user accounts.
         </header>
     );
 };

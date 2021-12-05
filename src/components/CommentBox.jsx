@@ -1,7 +1,7 @@
 import React from 'react';
 import { formatDate } from '../utils/utils';
 import { useState, useContext } from 'react';
-import { deleteComment } from '../utils/api';
+import { deleteComment, patchCommentByCommentId } from '../utils/api';
 import { UserContext } from '../contexts/UserContext';
 
 const CommentBox = ({comment}) => {
@@ -27,14 +27,14 @@ const CommentBox = ({comment}) => {
                     <button onClick={(event) => {
                         event.preventDefault();
                         setCurrentVotes((currentVotes) => currentVotes +1)
-                        // patchComment(comment_id, 1) // in my back-end endpoint for that dosn't exist yet
+                        patchCommentByCommentId(comment.comment_id, 1) 
                     }}>+</button>
                 </span>
                 <span id="button-minus">
                     <button onClick={(event) => {
                         event.preventDefault();
                         setCurrentVotes((currentVotes) => currentVotes -1)
-                        // patchComment(comment_id, -1) // in my back-end endpoint for that dosn't exist yet
+                        patchCommentByCommentId(comment.comment_id, -1)
                     }}>-</button>
                 </span>
                 {comment.author === user ?
