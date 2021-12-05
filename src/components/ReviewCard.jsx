@@ -19,11 +19,9 @@ const ReviewCard = ({review_id, isCommentsListLimited}) => {
             setSingleReview(reviewFromServer)
             setIsLoading(false)
         })
-    },[review_id])
+    },[review_id, isCommentsListLimited])
 
     const backgroundUrl = `url("${singleReview.review_img_url}")`
-
-   
 
     return (isLoading ? null :
         <StyledReviewCard background={backgroundUrl}>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { getUsers } from '../utils/api';
 import UserBox from './UserBox';
+import UsersDisplayHeader from './UsersDisplayHeader';
 
 const Users = ({setUser}) => {
     const [users, setUsers] = useState([])
@@ -13,14 +14,15 @@ const Users = ({setUser}) => {
     },[])
 
     return (
-        <div>
-            <ul>
+        <div className="main-display">
+             <header>
+                <UsersDisplayHeader />
+            </header>
+            <main>
                 {users.map((user) => {
-                    return <li key={user.username}>
-                        <UserBox username={user.username} setUser={setUser}/>
-                    </li>
+                    return <UserBox key={user.username} username={user.username} setUser={setUser}/>
                 })}
-            </ul>
+            </main>
         </div>
     );
 };

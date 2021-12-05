@@ -18,7 +18,7 @@ const MainHeader = ({setUser}) => {
                         <span>
                             Logged as: {user}
                         </span>
-                        <button className="main-header-logging-button" onClick={() => setUser()}>Log Out</button>
+                        <Link to="/"><button className="main-header-logging-button" onClick={() => setUser()}>Log Out</button></Link>
                         </>
                     }
                 </div>

@@ -1,3 +1,7 @@
+.body {
+  background-color: #090420;
+}
+
 .App {
   background-color: #090420;
   color: #FAF5FF;
@@ -333,3 +337,33 @@ input[type=text] {
   padding: 5px;
   width: 78%;
 }
+
+.user-box {
+  background: rgba(102, 76, 175, 0.2);
+  border: solid rgb(191, 177, 252) 1px;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  display: flex;
+}
+
+.user-box-img {
+  flex: 1;
+  width: 50%
+}
+
+.user-box-img img {
+max-width: 400px;
+max-height: 150px;
+}
+
+.user-box-name {
+  flex: 2;
+  width: 50%
+}
+

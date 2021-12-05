@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { getReviews } from '../utils/api';
 import { useParams } from 'react-router-dom';
 
-const MainDisplay = () => {
+const MainDisplay = (user) => {
     const [reviews, setReviews] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const {categoryURL, review_idURL} = useParams()
@@ -18,10 +18,14 @@ const MainDisplay = () => {
     useEffect(()=>{
         setIsLoading(true)
         getReviews({category}).then((reviewsFromServer) =>{
-            setReviews(reviewsFromServer)
+            const filteredReviews = reviewsFromServer.filter(review => Number(review.review_id) === Number(review_idURL))
+            review_idURL ? 
+                setReviews(filteredReviews)
+                : 
+                setReviews(reviewsFromServer) 
             setIsLoading(false)
         })
-    }, [category])
+    }, [category, user, review_idURL])
 
     return (isLoading ? <div className="main-display-header-loading">Loading...</div> :
         <div className="main-display">

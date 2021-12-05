@@ -12,7 +12,7 @@ function App() {
   const [categories, setCategories] = useState([])
   const [category, setCategory ] = useState('all')
   const [isLoading, setIsLoading] = useState(true)
-  const [user, setUser] = useState('DefaultUser') // endpoint for users in my backend dosn't exist yet so user is hardcoded to 'DefaultUser' 
+  const [user, setUser] = useState() // endpoint for users in my backend dosn't exist yet so user is hardcoded to 'DefaultUser' 
 
   useEffect(()=>{
       setIsLoading(true)
@@ -29,9 +29,8 @@ function App() {
           <MainHeader setUser={setUser}/>
           <Nav categories={categories} setCategory={setCategory} isLoading={isLoading} />
           <Routes>
-            <Route path="/" element={<MainDisplay category={category}/>} />
+            <Route path="/" element={<MainDisplay category={category} user={user}/>} />
             <Route path="/category/:categoryURL" element={<MainDisplay category={category}/>} />
-            <Route path="/review/:review_idURL" element={<MainDisplay />} />
             <Route path="/review/:review_idURL" element={<MainDisplay />} />
             <Route path="/users" element={<Users setUser={setUser}/>} />
           </Routes>
