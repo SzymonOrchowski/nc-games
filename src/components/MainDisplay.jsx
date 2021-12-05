@@ -34,7 +34,7 @@ const MainDisplay = (user) => {
             </header>
             <main>
                 {reviews.map((review)=>{
-                    return <ReviewCard key={review.review_id} review_id={review.review_id} isCommentsListLimited={isCommentsListLimited}/>
+                    return <ReviewCard key={review.review_id} review_id={review.review_id} isCommentsListLimited={isCommentsListLimited} />
                 })}
             </main>
         </div>

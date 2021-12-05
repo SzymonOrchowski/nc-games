@@ -12,7 +12,7 @@ function App() {
   const [categories, setCategories] = useState([])
   const [category, setCategory ] = useState('all')
   const [isLoading, setIsLoading] = useState(true)
-  const [user, setUser] = useState() // endpoint for users in my backend dosn't exist yet so user is hardcoded to 'DefaultUser' 
+  const [user, setUser] = useState()
 
   useEffect(()=>{
       setIsLoading(true)

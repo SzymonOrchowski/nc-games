@@ -5,7 +5,7 @@ import ReviewMain from './ReviewMain'
 import ReviewComments from './ReviewComments'
 import styled from 'styled-components';
 
-const ReviewCard = ({review_id, isCommentsListLimited}) => {
+const ReviewCard = ({review_id, isCommentsListLimited }) => {
     const [singleReview, setSingleReview] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [commentsLimit, setCommentsLimit] = useState(false)
@@ -15,7 +15,7 @@ const ReviewCard = ({review_id, isCommentsListLimited}) => {
         getReviews({
             review_id: review_id
         }).then((reviewFromServer)=>{
-            isCommentsListLimited ? setCommentsLimit(reviewFromServer.comment_count) : setCommentsLimit(1)
+            isCommentsListLimited ? setCommentsLimit(1) : setCommentsLimit(reviewFromServer.comment_count)
             setSingleReview(reviewFromServer)
             setIsLoading(false)
         })
@@ -27,7 +27,7 @@ const ReviewCard = ({review_id, isCommentsListLimited}) => {
         <StyledReviewCard background={backgroundUrl}>
             <div className="review-card">
                     <ReviewMain singleReview={singleReview} />
-                    <ReviewComments review_id={review_id} limit={commentsLimit}/>
+                    <ReviewComments review_id={review_id} limit={commentsLimit} />
             </div>
         </StyledReviewCard>
     );

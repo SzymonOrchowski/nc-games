@@ -6,23 +6,30 @@ import UsersDisplayHeader from './UsersDisplayHeader';
 
 const Users = ({setUser}) => {
     const [users, setUsers] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(()=>{
+        setIsLoading(true)
         getUsers().then((usersFromServer)=>{
             setUsers(usersFromServer)
+            setIsLoading(false)
         })
     },[])
 
     return (
         <div className="main-display">
-             <header>
-                <UsersDisplayHeader />
-            </header>
-            <main>
-                {users.map((user) => {
-                    return <UserBox key={user.username} username={user.username} setUser={setUser}/>
-                })}
-            </main>
+            {isLoading ? <div className="main-display-header-loading">Loading...</div> :
+            <>
+                <header>
+                    <UsersDisplayHeader />
+                </header>
+                <main>
+                    {users.map((user) => {
+                        return <UserBox key={user.username} username={user.username} setUser={setUser}/>
+                    })}
+                </main>
+            </>
+            }
         </div>
     );
 };

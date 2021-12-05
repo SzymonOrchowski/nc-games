@@ -46,9 +46,15 @@ const ReviewComments = ({review_id, limit}) => {
     return (isLoading ? <div>Loading comments...</div> :
         <>
             <div className="add-comment">
+                {user ? 
                 <p>
                     <button onClick={addCommentButtonVisibilityHandler}>Add comment</button>
                 </p>
+                :
+                <p>
+                    <Link to="/users"><button>Add comment</button></Link>
+                </p>
+                }
             </div>
             <div className="comments">
                 <ul>
@@ -64,8 +70,9 @@ const ReviewComments = ({review_id, limit}) => {
                         </div>
                     </li> : null}
                     {comments.map((comment, index) => {
-                        if (limit !== undefined) {
-                            if (index < limit) {
+                        console.log(limit)
+                        if (limit !== 1) {
+                            if (index < 1) {
                                 return <li key={comment.comment_id}><CommentBox comment={comment}/>
                                 </li>
                             } else {
@@ -77,7 +84,7 @@ const ReviewComments = ({review_id, limit}) => {
                         }
                     })}
                 </ul>
-                {limit ? <div id="show-all-comments-button">
+                {limit !== 1 ? <div id="show-all-comments-button">
                             <Link to={`/review/${review_id}`}><button>Show All Comments ({comments.length})</button></Link>
                         </div>
                 : null}
