@@ -14,7 +14,7 @@ const UserBox = ({username, setUser}) => {
     return (
         <div className="user-box">
             <div className="user-box-img">
-                <img src={userObj.avatar_url} src={userObj.username}></img>
+                <img src={userObj.avatar_url} alt={userObj.username}></img>
             </div>
             <div className="user-box-name">
                 <h2>{userObj.username}</h2>
