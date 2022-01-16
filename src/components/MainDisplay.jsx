@@ -6,15 +6,14 @@ import { getReviews } from '../utils/api';
 import { useParams } from 'react-router-dom';
 
 const MainDisplay = (user) => {
-    const {categoryURL, review_idURL} = useParams()
-
     const [reviews, setReviews] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-    const [isCommentsListLimited, setIsCommentsListLimited] = useState(true)
-    const [category, setCategory] = useState('all')
+    const {categoryURL, review_idURL} = useParams()
     
-    categoryURL ? setCategory(categoryURL) : setCategory('all')
-    review_idURL ? setIsCommentsListLimited(true) : setIsCommentsListLimited(false)
+    let category
+    categoryURL ? category = categoryURL : category = 'all'
+    let isCommentsListLimited
+    review_idURL ? isCommentsListLimited = true : isCommentsListLimited = false
 
     useEffect(()=>{
         setIsLoading(true)
@@ -26,7 +25,7 @@ const MainDisplay = (user) => {
                 setReviews(reviewsFromServer) 
             setIsLoading(false)
         })
-    }, [category, user, review_idURL])
+    }, [category, user, review_idURL, isCommentsListLimited])
 
     return (isLoading ? <div className="main-display-header-loading">Loading...</div> :
         <div className="main-display">
