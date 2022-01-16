@@ -30,7 +30,7 @@ Now start to implement the filtering/ordering features
 
 ### Login
 
-- [ ] Some indication of who is logged in (this can be hardcoded)
+- [x] Some indication of who is logged in (this can be hardcoded)
   - Only see who is the logged in user when they post a comment
 
 ### Reviews
@@ -49,13 +49,12 @@ Now start to implement the filtering/ordering features
   - with reviews with lots of comments it might be nice to see individual review pages rather than have all the comments on the category page
 - [x] Can vote on comments
 - [ ] Can vote a maximum of once in either direction per page load
-- [backendEndpointNeeded] Votes are persistent when page is refreshed
+- [x] Votes are persistent when page is refreshed
 - [x] Can post new comments, which are persistent
 
 ### Additional functionality:
 
-- [ ] Can only delete comments of logged in user
-  - Can delete any comment even if user didn't write it
+- [x] Can only delete comments of logged in user
 - [x] Deleted comments don’t re-appear on re-render/refresh
 - [ ] sort comments by date created / votes
 - [ ] navigate over pages of reviews (if implemented in back-end)
